@@ -1,44 +1,8 @@
 from datetime import date, timedelta
 import csv
-
-# Declare a function that convert Swedish numbers
-
-# with ' ' as thousand separators and ',' 
-
-# as decimal separators to float
-
-# - DECLARE A FUNCTION BEFORE CALLING IT
-
-# Declare a function that convert Swedish numbers
-
-# with ' ' as thousand separators and ',' 
-
-# as decimal separators to float
-
-# - DECLARE A FUNCTION BEFORE CALLING IT
-
-def swedishNumberStringsToFloat(string):
-
-    # try - try to do something that we know
-
-    # might give us a runtime error / "crash the program"
-
-    try:
-
-        return float(string.replace(' ','').replace(',','.'))
-
-    # handle exceptions - when what we tried didn't work
-
-    except:
-
-        # return 0 if we can't convert to a number
-
-        return 0
     
-
-
 def safe_float(value):
-    """Konverterar svenska siffror t.ex. '1 234,5' -> 1234.5"""
+    
     try:
         s = str(value).replace(" ", "").replace(",", ".")
         return float(s)
@@ -81,3 +45,41 @@ def analysperiod(network_incidents, kolumn_namn="week_number", fallback_år=None
         return None, None
 
     return min(startdatum).isoformat(), max(slutdatum).isoformat()
+
+
+
+
+### Felhantering för trasig data och rapportera för datakvalitetsproblem
+
+def check_data_quality(incidents):
+    # Går igenom en lista av incidenter och identifierar datakvalitetsproblem.
+    # Returnerar en lista med felmeddelanden.
+    issues = []
+    
+    for i, inc in enumerate(incidents, start=1):
+        site = inc.get("site")
+        device = inc.get("device_hostname")
+        severity = inc.get("severity")
+        cost = inc.get("cost_sek")
+        resolution = inc.get("resolution_minutes")
+        
+        # Saknade obligatoriska fält
+        if not site or not device:
+            issues.append(f"Rad {i}: Saknas site eller device_hostname")
+        
+        # Ogiltig severity
+        if severity and severity.strip().lower() not in ["critical", "high", "medium", "low"]:
+            issues.append(f"Rad {i}: Ogiltig severity '{severity}'")
+        
+        # Numeriska fält
+        try:
+            safe_float(cost)
+        except Exception:
+            issues.append(f"Rad {i}: Kostnad '{cost}' kan inte omvandlas till float")
+        
+        try:
+            safe_float(resolution)
+        except Exception:
+            issues.append(f"Rad {i}: Resolution '{resolution}' kan inte omvandlas till float")
+    
+    return issues

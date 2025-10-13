@@ -1,0 +1,32 @@
+================================================================================
+                   INCIDENT ANALYSIS - SEPTEMBER 2024
+================================================================================
+
+Analysperiod: 2024-09-02 till 2024-09-29
+Total incidents: 52 st
+Total kostnad: 445,910.10 SEK
+
+EXECUTIVE SUMMARY
+-----------------
+⚠ KRITISKT: Datacenter har 3 critical incidents
+⚠ KOSTNAD: Dyraste incident: 45,678.90 SEK (Huvudkontor - hardware) - SW-ACCESS-03
+⚠ Totalt 52 incidenter rapporterade under perioden
+⚠ 9 incidenter påverkar mer än 100 användare
+
+
+INCIDENTS PER SEVERITY
+----------------------
+Critical  :  10 st (19.2%) - Genomsnitt: 118.8 resolution min, 25,967 SEK/incident
+High      :  13 st (25.0%) - Genomsnitt: 108.5 resolution min, 8,252 SEK/incident
+Medium    :  17 st (32.7%) - Genomsnitt: 113.2 resolution min, 3,507 SEK/incident
+Low       :  12 st (23.1%) - Genomsnitt: 107.1 resolution min, 1,613 SEK/incident
+
+PROBLEM DEVICES
+----------------
+SW-DC-TOR-02: 4 incidents, Total kostnad: 86,048.90 SEK, Föreslagen åtgärd: Kontrollera hårdvara/firmware, utvärdera byte av hårdvara
+RT-LAGER-01: 3 incidents, Total kostnad: 34,901.15 SEK, Föreslagen åtgärd: Kontrollera hårdvara/firmware, utvärdera byte av hårdvara
+SW-DR-01: 3 incidents, Total kostnad: 5,258.50 SEK, Föreslagen åtgärd: Kontrollera hårdvara/firmware, utvärdera byte av hårdvara
+
+DATA QUALITY ISSUES
+-------------------
+Inga datakvalitetsproblem identifierade.
