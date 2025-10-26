@@ -99,7 +99,7 @@ for site, stats in site_stats.items():
     avg_resolution = (stats["total_resolution"] / stats["resolution_count"]) if stats["resolution_count"] > 0 else 0
     print(f"{site:<20}{stats['count']:<10}{stats['total_cost']:<20.2f}{avg_resolution:.2f}")
 
-
+# Kategori och impact
 category_stats = defaultdict(lambda: {"sum_impact": 0.0, "count": 0})
 
 for inc in incidents:
